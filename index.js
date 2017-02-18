@@ -108,7 +108,7 @@ function writeToDisk() {
   const fileName = 'test.json'
   const kml = fs.readFileSync('./United\ States.kml', 'utf8');
   const kml_obj = JSON.parse(xml2json.toJson(kml));
-  fs.writeFile(fileName, JSON.stringify(kml_obj, null, 2) err => {
+  fs.writeFile(fileName, JSON.stringify(kml_obj, null, 2), err => {
     if (err) throw err;
     logger.info(`${fileName} done writing to ${__dirname}`);
   })
