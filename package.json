@@ -1,0 +1,19 @@
+{
+  "name": "kml-to-sheets",
+  "version": "1.0.0",
+  "description": "Parse KML and upload to Google Sheet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kmedley@costco.com",
+  "license": "MIT",
+  "dependencies": {
+    "sheets-api": "^1.0.5",
+    "xml2json": "^0.11.0"
+  },
+  "devDependencies": {
+    "moment": "^2.17.1",
+    "winston": "^2.3.1"
+  }
+}
