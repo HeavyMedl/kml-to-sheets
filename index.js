@@ -1,6 +1,7 @@
 const xml2json = require('xml2json');
 const SheetsAPI = require('sheets-api');
 const spreadsheet = "1_Hp3-5cQJjFmZZL9zim7YH3ZNUQ8bCeItKJ_n-bns5E";
+const sourceKml = 'source.kml';
 const url = `https://docs.google.com/spreadsheets/d/${spreadsheet}/edit#gid=0`;
 const client = new SheetsAPI(spreadsheet);
 const fs = require('fs');
@@ -12,7 +13,7 @@ client.authorize()
     try {
       logger.info('Sheets API authorized', auth);
       logger.info('Parsing XML to JSON string and converting to object');
-      const kml = fs.readFileSync('./United\ States.kml', 'utf8');
+      const kml = fs.readFileSync(sourceKml, 'utf8');
       const kml_obj = JSON.parse(xml2json.toJson(kml));
       logger.info('Building requests array to be sent to Google Sheets');
       let requests = [{ // Clear operation.
@@ -106,7 +107,7 @@ function get_property(property, arr) {
 
 function writeToDisk() {
   const fileName = 'test.json'
-  const kml = fs.readFileSync('./United\ States.kml', 'utf8');
+  const kml = fs.readFileSync(sourceKml, 'utf8');
   const kml_obj = JSON.parse(xml2json.toJson(kml));
   fs.writeFile(fileName, JSON.stringify(kml_obj, null, 2), err => {
     if (err) throw err;
